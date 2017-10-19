@@ -1,17 +1,17 @@
 #!/bin/sh
-if [ ! -f /conf/aria2.conf ]; then
-	cp /conf-copy/aria2.conf /conf/aria2.conf
+if [ ! -f /config/aria2.conf ]; then
+	cp /config-copy/aria2.conf /config/aria2.conf
 	if [ $SECRET ]; then
-		echo "rpc-secret=${SECRET}" >> /conf/aria2.conf
+		echo "rpc-secret=${SECRET}" >> /config/aria2.conf
 	fi
 fi
-if [ ! -f /conf/on-complete.sh ]; then
-	cp /conf-copy/on-complete.sh /conf/on-complete.sh
+if [ ! -f /config/on-complete.sh ]; then
+	cp /config-copy/on-complete.sh /config/on-complete.sh
 fi
 
-chmod +x /conf/on-complete.sh
-touch /conf/aria2.session
+chmod +x /config/on-complete.sh
+touch /config/aria2.session
 
 darkhttpd /aria2-webui --port 80 &
 darkhttpd /data --port 8080 &
-aria2c --conf-path=/conf/aria2.conf
+aria2c --conf-path=/config/aria2.conf

@@ -1,11 +1,11 @@
-FROM alpine:edge
+FROM alpine:latest
 
 MAINTAINER xujinkai <jack777@xujinkai.net>
 
 RUN apk update && \
 	apk add --no-cache --update bash && \
-	mkdir -p /conf && \
-	mkdir -p /conf-copy && \
+	mkdir -p /config && \
+	mkdir -p /config-copy && \
 	mkdir -p /data && \
 	apk add --no-cache --update aria2 && \
 	apk add git && \
@@ -14,17 +14,17 @@ RUN apk update && \
     apk del git && \
 	apk add --update darkhttpd
 
-ADD files/start.sh /conf-copy/start.sh
-ADD files/aria2.conf /conf-copy/aria2.conf
-ADD files/on-complete.sh /conf-copy/on-complete.sh
+ADD files/start.sh /config-copy/start.sh
+ADD files/aria2.conf /config-copy/aria2.conf
+ADD files/on-complete.sh /config-copy/on-complete.sh
 
-RUN chmod +x /conf-copy/start.sh
+RUN chmod +x /config-copy/start.sh
 
 WORKDIR /
 VOLUME ["/data"]
-VOLUME ["/conf"]
+VOLUME ["/config"]
 EXPOSE 6800
 EXPOSE 80
 EXPOSE 8080
 
-CMD ["/conf-copy/start.sh"]
+CMD ["/config-copy/start.sh"]
