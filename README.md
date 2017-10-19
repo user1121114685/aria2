@@ -9,7 +9,7 @@ Move file completed to another folder.
 
 ### 创建容器
 
-请使用实际的路径替换以下命令中的 `/DOWNLOAD_DIR` 和 `CONFIG_DIR`，他们将容器中的下载目录和配置文件目录映射到你指定的主机路径上，以便于管理下载的文件和 Aria2 的配置。
+请使用实际的路径替换以下命令中的 `/DOWNLOAD_DIR` 和 `/CONFIG_DIR`，他们将容器中的下载目录和配置文件目录映射到你指定的主机路径上，以便于管理下载的文件和 Aria2 的配置。
 
 ```
 sudo docker run -d \
@@ -34,6 +34,6 @@ getnas/aria2
 
 ### 涉及的项目
 
-[Aria2](https://github.com/aria2/aria2)
-[WebUI-Aria2](https://github.com/ziahamza/webui-aria2)
-[aria2-with-webui](https://github.com/XUJINKAI/aria2-with-webui)
+* [Aria2](https://github.com/aria2/aria2)
+* [WebUI-Aria2](https://github.com/ziahamza/webui-aria2)
+* [aria2-with-webui](https://github.com/XUJINKAI/aria2-with-webui)
