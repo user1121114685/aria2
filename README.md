@@ -37,3 +37,8 @@ getnas/aria2
 [Aria2](https://github.com/aria2/aria2)
 [WebUI-Aria2](https://github.com/ziahamza/webui-aria2)
 [aria2-with-webui](https://github.com/XUJINKAI/aria2-with-webui)
+
+
+
+
+请修复docker上内存占用过高的问题，我以高权限不限制内存进行运行，竟然高达1.22G的RAM占用。望修复
