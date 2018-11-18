@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-MAINTAINER xujinkai <jack777@xujinkai.net>
+MAINTAINER Herald Yu <yuhr123@gmail.com>
 
 RUN apk update && \
 	apk add --no-cache --update bash && \
