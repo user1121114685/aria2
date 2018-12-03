@@ -7,7 +7,7 @@ RUN apk update && \
 	mkdir -p /config && \
 	mkdir -p /config-copy && \
 	mkdir -p /data && \
-	apk add --no-cache --update aria2 curl jq wget && \
+	apk add --no-cache --update aria2 curl jq wget unzip && \
 	curl -sL https://api.github.com/repos/mayswind/AriaNg/releases/latest \
 	| jq -r '.assets[1].browser_download_url' \
 	| wget -qi - -O AriaNg.zip && \
