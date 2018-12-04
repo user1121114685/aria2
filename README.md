@@ -32,6 +32,11 @@ getnas/aria2
 > 提示：请用随意的一组字符串替换 `YOUR_SECRET_CODE`，在浏览器中管理 aria2 时需要用这个
 > 安全代码认证身份，以防他人恶意使用。
 
+### 指定用户和组
+
+改用 LinuxServer 的 alpine 基础镜像，可以使用环境变量 `PUID` 和 `PGID` 指定容器和主机
+之间映射的用户权限。
+
 ### 使用方法
 
 * `http://serverip:6880` 打开 web 管理界面

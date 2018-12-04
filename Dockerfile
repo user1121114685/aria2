@@ -1,19 +1,25 @@
-FROM alpine:latest
+FROM lsiobase/alpine:3.8
 
-MAINTAINER Herald Yu <yuhr123@gmail.com>
+LABEL maintainer="Herald Yu <yuhr123@gmail.com>"
 
-RUN apk update && \
-	apk add --no-cache --update bash && \
+RUN apk add --no-cache --upgrade \
+	ca-certificates \
+	bash \
+	wget \
+	curl \
+	jq \
+	unzip \
+	openssl \
+	darkhttpd \
+	aria2 && \
 	mkdir -p /config && \
 	mkdir -p /config-copy && \
 	mkdir -p /data && \
-	apk add --no-cache --update aria2 curl jq wget unzip && \
 	curl -sL https://api.github.com/repos/mayswind/AriaNg/releases/latest \
 	| jq -r '.assets[1].browser_download_url' \
 	| wget -qi - -O AriaNg.zip && \
 	unzip AriaNg.zip -d AriaNg && \
-	rm AriaNg.zip && \
-	apk add --update darkhttpd
+	rm AriaNg.zip
 
 ADD files/start.sh /config-copy/start.sh
 ADD files/aria2.conf /config-copy/aria2.conf

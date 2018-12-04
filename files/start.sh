@@ -8,9 +8,14 @@ fi
 if [ ! -f /config/on-complete.sh ]; then
 	cp /config-copy/on-complete.sh /config/on-complete.sh
 fi
+if [ ! -f /config/dht.dat ]; then
+        cp /config-copy/dht.dat /config/dht.dat
+fi
+if [ ! -f /config/aria2.session ]; then
+	touch /config/aria2.session
+fi
 
 chmod +x /config/on-complete.sh
-touch /config/aria2.session
 
 darkhttpd /AriaNg --port 80 &
 darkhttpd /data --port 8080 &
