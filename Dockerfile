@@ -1,22 +1,30 @@
-FROM alpine:latest
+FROM lsiobase/alpine:3.8
 
-MAINTAINER xujinkai <jack777@xujinkai.net>
+LABEL maintainer="Herald Yu <yuhr123@gmail.com>"
 
-RUN apk update && \
-	apk add --no-cache --update bash && \
+RUN apk add --no-cache --upgrade \
+	ca-certificates \
+	bash \
+	wget \
+	curl \
+	jq \
+	unzip \
+	openssl \
+	darkhttpd \
+	aria2 && \
 	mkdir -p /config && \
 	mkdir -p /config-copy && \
 	mkdir -p /data && \
-	apk add --no-cache --update aria2 && \
-	apk add git && \
-	git clone https://github.com/ziahamza/webui-aria2 /aria2-webui && \
-    rm /aria2-webui/.git* -rf && \
-    apk del git && \
-	apk add --update darkhttpd
+	curl -sL https://api.github.com/repos/mayswind/AriaNg/releases/latest \
+	| jq -r '.assets[1].browser_download_url' \
+	| wget -qi - -O AriaNg.zip && \
+	unzip AriaNg.zip -d AriaNg && \
+	rm AriaNg.zip
 
 ADD files/start.sh /config-copy/start.sh
 ADD files/aria2.conf /config-copy/aria2.conf
 ADD files/on-complete.sh /config-copy/on-complete.sh
+ADD files/dht.dat /config-copy/dht.dat
 
 RUN chmod +x /config-copy/start.sh
 
